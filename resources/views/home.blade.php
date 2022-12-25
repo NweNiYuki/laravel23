@@ -14,7 +14,17 @@
                         </div>
                     @endif
 
-                    You are Required to Login!
+                    <div class="container">
+                        <h2>Home Page</h2>
+                        <div>
+                            <a href="/todo/create"><button class="btn btn-success">Create</button></a>
+                        </div>
+
+                        @foreach($todo as $list)
+                        <a href="/todo/{{ $list->id}}"> <li>{{ $list->title }}</li></a>
+                        <hr>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
