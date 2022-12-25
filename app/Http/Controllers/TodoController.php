@@ -38,7 +38,7 @@ class TodoController extends Controller
         // $todo->reason = $request->reason;
 
         Todo::create($validateData + ['user_id' => auth()->id()]);
-        return redirect('todo');
+        return redirect('todo')->with('message', 'Created Successfully');
 
     }
 
@@ -53,7 +53,7 @@ class TodoController extends Controller
         $todo = Todo::find($id);
         if ($todo->user_id != auth()->id()) {
             abort(403);
-        }
+        } 
         return view('edit', compact('todo'));
     }
 
@@ -66,7 +66,7 @@ class TodoController extends Controller
 
         $todo->save();
 
-        return redirect('todo');   
+        return redirect('todo')->with('message', 'Updated Successfully');  
      }
 
      public function destroy(Todo $todo)

@@ -13,6 +13,13 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    
+                    @if (Session:: has('message'))
+                          <div class="alert alert-success alert-block">
+	                        <button type="button" class="close" data-dismiss="alert">×</button>	
+                          <strong>{{ session('message')}}</strong>
+                          </div>
+                    @endif
 
                     {{-- <div class="container">
                         <h2>Home Page</h2>

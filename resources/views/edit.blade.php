@@ -3,6 +3,12 @@
 @section('content')
 
 	<div class="container">
+		@if (Session:: has('message'))
+		<div class="alert alert-success alert-block">
+		  <button type="button" class="close" data-dismiss="alert">×</button>	
+		<strong>{{ session('message')}}</strong>
+		</div>
+        @endif
 		<form action="/todo/{{ $todo->id }}" method="post" enctype="multipart/form-data">
 			@csrf
 			@method("PATCH")
@@ -21,7 +27,7 @@
 		<textarea name="reason" id="reason" class="form-control">{{ $todo->reason }}</textarea> 
 		</div>
 
-		 <button type="submit" class="btn btn-primary">Submit</button>
+		 <button type="submit" class="btn btn-primary">Update</button>
 	</form>
 	</div>
 @endsection
